@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.tradeix.core.grpc.entities";
+option java_outer_classname = "EntitiesProto";
+option objc_class_prefix = "TIX";
+
+/* Entities service: https://github.com/tradeix/ng-grpc-proto/wiki/Entities */
+package MarcoPolo.Entities;
+
+message SearchEntitiesRequest{
+    string registeredName = 1;
+}
+message SearchEntitiesResponse{
+    string id = 1;
+    string registeredName = 2;
+    string x500 = 3;
+}
+
+service EntitiesService {
+    rpc Search (stream SearchEntitiesRequest) returns (stream SearchEntitiesResponse);
+}
